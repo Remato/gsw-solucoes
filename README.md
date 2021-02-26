@@ -35,7 +35,7 @@ class User {
 
 1 - Abra 2 terminais, para back end e front end respectivamente.
 
-* [Automatico]: dê permissão para os scripts:
+* [Automático]: dê permissão para os scripts:
   ```sh
   chmod +x backend.sh frontend.sh
   ```
