@@ -1,1 +1,1 @@
-cd backend && yarn && yarn dev:server
+cd backend && yarn && yarn typeorm migration:run && yarn dev:server
