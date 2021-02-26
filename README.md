@@ -1,65 +1,40 @@
-![oowlish](https://rendaextraton.com.br/wp-content/uploads/2020/04/Da-stone-para-o-autonomo.jpg)
+![gsw]('https://github.com/Remato/gsw-solucoes/blob/main/frontend/src/assets/logo.png')
+  
+# Teste GSW Soluções
+Este projeto provê uma API Rest simples para manipular dados de usuários e controle de login. O projeto foi dividido em 2 módulos:
 
-# Restaurante Padre Cícero
-Este projeto provê uma API Rest simples para manipular dados de produtos e vendas de um restaurante. O projeto foi dividido em 2 módulos:
 
+**Back end:** cria um servidor NodeJS contendo a API usando [Node.js](https://nodejs.org/en/) + [Express](https://expressjs.com/)
 
-**Back end:** cria um servidor NodeJS contendo a API Rest usando [Node.js](https://nodejs.org/en/) + [Typegoose/Mongoose](https://github.com/typegoose/typegoose)
-
-**Front end:** cria um simples cliente web para acessar o backend usando [React JS](https://reactjs.org/)
-
+**Front end:** cria um simples cliente web para acessar o backend usando [React JS](https://reactjs.org/) com um controle de acesso por meio de login.
 ## Documentação
-### Definição de models
+### Definição do model **User**
 
 ```ts
-export class ProductClass {
-  @prop()
-  public id!: string;
+class User {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-  @prop()
-  public name!: string;
+  @Column()
+  name: string;
 
-  @prop()
-  public value!: number;
+  @Column()
+  email: string;
+
+  @Column()
+  password: string;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
 }
 ```
-**ProductClass: é a classe que irá gerar um model utilizando o typegoose para acessar os produtos**
-
-```ts
-export class SaleClass {
-  @prop()
-  public id!: string;
-
-  @prop({ ref: () => ProductClass })
-  public products?: Ref<ProductClass>[];
-
-  @prop({ required: true, default: Date.now() })
-  private createdAt!: Date;
-}
-```
-**SaleClass: é a classe que irá gerar um model utilizando o typegoose para acessar as vendas**
-
-```ts
-export class UserClass {
-  @prop()
-  public id!: string;
-
-  @prop()
-  public name!: string;
-
-  @prop({ unique: true })
-  public email!: string;
-
-  @prop()
-  public password!: string;
-}
-```
-
-**UserClass: é a classe que irá gerar um model utilizando o typegoose para acessar os usuários, porém essa rota foi criada apenas para criar um usuário administrativo para poder acessar a página web**
 
 ## Quickstart
 
-1 - Abra 2 terminais, para backend e frontend respectivamente.
+1 - Abra 2 terminais, para back end e front end respectivamente.
 
 * [Automatico]: dê permissão para os scripts:
   ```sh
@@ -76,31 +51,31 @@ export class UserClass {
   ```
 
 * [Manualmente]: na raíz do projeto:
+ 
+  **inicializando back end!**
   ```sh
-  cd backend && yarn && yarn dev:server
+  cd backend && yarn && yarn typeorm migration:run && yarn dev:server
   ```
-  **inicializa back end!**
-
+ 
+  **inicializando front end!**
   ```sh
   cd frontend && yarn && yarn start
   ``` 
-  **inicializa front end!**
-
-
+  
  ## Detalhes
 
-http://localhost:3333
-API Rest 
+API = http://localhost:3333/users
 
-http://localhost:3000 
-React app site
+React app site = http://localhost:3000 
 
-**o banco de dados mongoDB foi previamente povoado, porém no site pode-se:**
+
+**o banco de dados postgres é inicializado com um user inicial para poder logar na aplicação, após logar é possível ter acesso ao resto da API, caso contrário o middleware irá bloquear o acesso através do JWT:**
  
- **1. listar produtos/vendas**
+ 
+ **1. Cadastrar novo usuário**
 
- **2. excluir produtos**
+ **2. Listar usuários**
 
- **3. cadastrar novo produto**
+ **3. Atualizar usuário**
 
- **4. fazer uma nova venda.**
+ **4. Excluir usuário**
