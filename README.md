@@ -1,5 +1,4 @@
-![gsw]('https://github.com/Remato/gsw-solucoes/blob/main/frontend/src/assets/logo.png')
-  
+![gsw](https://i.imgur.com/pShQuyj.png)
 # Teste GSW Soluções
 Este projeto provê uma API Rest simples para manipular dados de usuários e controle de login. O projeto foi dividido em 2 módulos:
 
@@ -71,7 +70,7 @@ React app site = http://localhost:3000
 
 **o banco de dados postgres é inicializado com um user inicial para poder logar na aplicação, após logar é possível ter acesso ao resto da API, caso contrário o middleware irá bloquear o acesso através do JWT:**
  
- 
+
  **1. Cadastrar novo usuário**
 
  **2. Listar usuários**
