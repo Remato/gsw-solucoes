@@ -97,7 +97,7 @@ const Dashboard: React.FC = () => {
   }, [addToast]);
 
   const handleUpdateUser = useCallback(async(data: UpdateUserFormData) => {
-    createRef.current?.setErrors({});
+    updateRef.current?.setErrors({});
   
     await api.put(`/users/`, {
       name: data.name, 
